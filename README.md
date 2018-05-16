@@ -24,7 +24,7 @@ list processes without an associated terminal
 ./hw2 -x
 ```
 
-> you can combile 2 option like ```./hw2 -a -x```
+> you can combine 2 option like ```./hw2 -a -x```
 
 - ```-p```
 sort the listed processes by pid (default)
@@ -50,4 +50,10 @@ sort the listed processes by sid
 ./hw2 -s
 ```
 
-> if you combile servel sort-option, it will only be effect by last one
+> if you combine servel sort-option, it will only be effect by last one
+
+- ```-t```
+lists processes in a tree-relationship,
+```
+not implement
+```
