@@ -1,3 +1,2 @@
 compile:
-	gcc -o hw2 hw2.c -static
-	./hw2
+	gcc -o hw2 hw2.c -static -w
