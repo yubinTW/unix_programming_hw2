@@ -158,8 +158,7 @@ void setOption(char* opt) {
 		qsort(process_array, process_count,sizeof(ProcessInfo), compareBySID);
 } //end of setOption()
 
-int main(int argc, char** argv) {
-	int i;
+void getAllProcessID() {
 	DIR* d;
 	struct dirent *dir;
 	d = opendir("/proc");
@@ -172,19 +171,21 @@ int main(int argc, char** argv) {
 			}
 		}
 	}
+} // end of getAllProcessID()
+
+int main(int argc, char** argv) {
+	int i;
+	
+	getAllProcessID();
+
 	process_array = (ProcessInfo*)malloc(sizeof(ProcessInfo) * process_count); 
-	for(i=0 ; i<process_count ; i++){
-		getProcessInfo(names[i], &(process_array[i]));	
-	}
+	for(i=0 ; i<process_count ; i++)
+		getProcessInfo(names[i], &(process_array[i]));
 
 	// handle optional argument
-	if(argc == 1) {
-
-	}else {
-		for(i=1;i<argc;i++){
-			setOption(argv[i]);
-		}
-	}
+	for(i=1;i<argc;i++)
+		setOption(argv[i]);
+	
 	printTitle(hasTTY);
 	printAllProcess(allUser, hasTTY);
 
